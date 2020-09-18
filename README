@@ -1,1 +1,3 @@
-
+Run following commands to run this project
+ - npm install (run this command only the first time you run the project)
+ - npm run dev

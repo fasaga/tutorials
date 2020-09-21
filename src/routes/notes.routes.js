@@ -11,20 +11,20 @@ const {
 } =  require('../controllers/notes.controller');
 
 // New notes
-router.get('/notes/add', renderNoteForm);
+router.get('/tutorials/add', renderNoteForm);
 
-router.post('/notes/new-note', createNewNote);
+router.post('/tutorials/new-tutorial', createNewNote);
 
 // Get All Note
-router.get('/notes', renderNotes);
+router.get('/tutorials', renderNotes);
 
 // Edit notes
-router.get('/notes/edit/:id', renderEditForm);
+router.get('/tutorials/edit/:id', renderEditForm);
 
-router.put('/notes/edit/:id', updateNote);
+router.put('/tutorials/edit/:id', updateNote);
 
 // Delete note
-router.delete('/notes/delete/:id', deleteNote);
+router.delete('/tutorials/delete/:id', deleteNote);
 
 
 module.exports = router;

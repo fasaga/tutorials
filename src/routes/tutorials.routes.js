@@ -10,20 +10,20 @@ const {
     deleteTutorial 
 } =  require('../controllers/tutorials.controller');
 
-// New notes
+// New tutorials
 router.get('/tutorials/add', renderTutorialForm);
 
 router.post('/tutorials/new-tutorial', createNewTutorial);
 
-// Get All Note
+// Get All tutorials
 router.get('/tutorials', renderTutorials);
 
-// Edit notes
+// Edit tutorials
 router.get('/tutorials/edit/:id', renderEditForm);
 
 router.put('/tutorials/edit/:id', updateTutorial);
 
-// Delete note
+// Delete tutorial
 router.delete('/tutorials/delete/:id', deleteTutorial);
 
 

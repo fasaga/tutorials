@@ -1,10 +1,10 @@
-const { Router } = require('express');
-const router = Router();
+const express = require("express");
+const router = express.Router();
 
-const { renderIndex, renderAbout } = require('../controllers/index.controller');
+const { renderIndex, renderAbout } = require("../controllers/index.controller");
 
-router.get('/', renderIndex);
+router.get("/", renderIndex);
 
-router.get('/about', renderAbout);
+router.get("/about", renderAbout);
 
 module.exports = router;

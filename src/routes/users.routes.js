@@ -3,7 +3,7 @@ const router = require("express").Router();
 const {
   renderSignUpForm,
   signup,
-  renderSigninForm,
+  renderSignInForm,
   signin,
   logout
 } = require("../controllers/users.controller");
@@ -13,7 +13,7 @@ router.get("/users/signup", renderSignUpForm);
 
 router.post("/users/signup", signup);
 
-router.get("/users/signin", renderSigninForm);
+router.get("/users/signin", renderSignInForm);
 
 router.post("/users/signin", signin);
 

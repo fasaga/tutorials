@@ -6,11 +6,12 @@ const session = require("express-session");
 const flash = require("connect-flash");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
-
+const passport = require("passport")
 
 
 // Initializations
 const app = express();
+require('./config/passport');
 
 // settings
 app.set("port", process.env.PORT || 4000);
@@ -38,12 +39,16 @@ app.use(
     
   })
 );
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(flash());
 
 // Global Variables
 app.use((req, res, next) => {
   res.locals.success_msg = req.flash("success_msg");
   res.locals.error_msg = req.flash("error_msg");
+  res.locals.error = req.flash("error");
+  res.locals.user = req.user || null;
   next();
 });
 

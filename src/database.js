@@ -1,16 +1,17 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
+const config = require("./config");
 
-const { NOTES_MONGODB_HOST,NOTES_MONGODB_DATABASE } =process.env;
-const MONGODB_URI = `mongodb://${NOTES_MONGODB_HOST}/${NOTES_MONGODB_DATABASE}`;
+const MONGODB_URI = `mongodb://${config.MONGODB_HOST}/${config.MONGODB_DATABASE}`;
 
-mongoose.connect(MONGODB_URI, {
-    useUnifiedTopology: true,
+mongoose
+  .connect(MONGODB_URI, {
     useNewUrlParser: true,
-    useCreateIndex: true
-})
-
-.then(db => console.log('Database is connected'))
-.catch(err => console.log(err));
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+    useCreateIndex: true,
+  })
+  .then((db) => console.log("Mongodb is connected to", db.connection.host))
+  .catch((err) => console.error(err));
 
 
 

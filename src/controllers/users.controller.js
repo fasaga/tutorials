@@ -28,11 +28,13 @@ usersCtrl.signup = async (req, res) => {
       const emailUser = await User.findOne({email:email});
       if (emailUser){
           req.flash('error_msg', 'The email is already in use.');
-          res.redirect('users/signup');
+          res.redirect('/users/signup');
       } else {
           const newUser = new User({name, email, password});
+          newUser.password = await newUser.encryptPassword(password);
           await newUser.save();
-          res.redirect('users/signin');
+          req.flash('success_msg', 'You are registered');
+          res.redirect('/users/signin');
       }
   }
 };

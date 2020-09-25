@@ -47,7 +47,7 @@ usersCtrl.renderSignInForm = (req, res) =>{
 
 usersCtrl.signin = passport.authenticate('local', {
     failureRedirect: '/users/signin',
-    successRedirect: '/notes',
+    successRedirect: '/tutorials',
     failureFlash: true
   });
 
@@ -55,7 +55,7 @@ usersCtrl.signin = passport.authenticate('local', {
 usersCtrl.logout = (req, res) =>{
  req.logout();
  req.flash('success_msg', 'You are logged out now.');
- res.redirect('users/signin');
+ res.redirect('/users/signin');
 }
 
 

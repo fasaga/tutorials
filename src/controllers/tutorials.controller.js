@@ -18,14 +18,14 @@ tutorialsCtrl.createNewTutorial = async (req, res) => {
 };
 
 tutorialsCtrl.renderTutorials = async (req, res) => {
-  const tutorials = await Tutorial.find({ user: req.user.id }).sort({createdAt: 'desc' });
+  const tutorials = await Tutorial.find({ user: req.user.id }).sort({createdAt: 'desc' }).lean();
   res.render("tutorials/all-tutorials", { tutorials });
 };
 
 tutorialsCtrl.renderEditForm = async (req, res) => {
-  const tutorial = await Tutorial.findById(req.params.id);
-  req.flas ('error_msg', 'Not Authorized.');
-  if (tutorial.user != req.user.id){
+  const tutorial = await Tutorial.findById(req.params.id).lean();
+  if (tutorial.user != req.user.id) {
+    req.flash('error_msg', 'Not Authorized.');
     return res.redirect('/tutorials');
   }
   res.render("tutorials/edit-tutorial", { tutorial });

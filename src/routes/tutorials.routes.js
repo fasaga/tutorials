@@ -1,5 +1,5 @@
-const express = require('express');
-const router = express.Router();
+const { Router } = require('express')
+const router = Router();
 
 const { 
     renderTutorialForm, 
@@ -10,21 +10,23 @@ const {
     deleteTutorial 
 } =  require('../controllers/tutorials.controller');
 
-// New tutorials
-router.get('/tutorials/add', renderTutorialForm);
+const {isAuthenticated} = require ('../helpers/auth')
 
-router.post('/tutorials/new-tutorial', createNewTutorial);
+// New tutorials
+router.get('/tutorials/add', isAuthenticated, renderTutorialForm);
+
+router.post('/tutorials/new-tutorial', isAuthenticated, createNewTutorial);
 
 // Get All tutorials
-router.get('/tutorials', renderTutorials);
+router.get('/tutorials', isAuthenticated, renderTutorials);
 
 // Edit tutorials
-router.get('/tutorials/edit/:id', renderEditForm);
+router.get('/tutorials/edit/:id', isAuthenticated, renderEditForm);
 
-router.put('/tutorials/edit/:id', updateTutorial);
+router.put('/tutorials/edit/:id', isAuthenticated, updateTutorial);
 
 // Delete tutorial
-router.delete('/tutorials/delete/:id', deleteTutorial);
+router.delete('/tutorials/delete/:id', isAuthenticated, deleteTutorial);
 
 
 module.exports = router;

@@ -15,7 +15,7 @@ const {isAuthenticated} = require ('../helpers/auth')
 // New tutorials
 router.get('/tutorials/add', isAuthenticated, renderTutorialForm);
 
-router.post('/tutorials/new-tutorials', isAuthenticated, createNewTutorial);
+router.post('/tutorials/new-tutorial', isAuthenticated, createNewTutorial);
 
 // Get All tutorials
 router.get('/tutorials', isAuthenticated, renderTutorials);
